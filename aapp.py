@@ -8,7 +8,7 @@ import os
 
 # Load the trained model
 model_path = 'C:/Users/xpert computers/Desktop/Gen_AI_Class_15/Prediction_and_Deployment/model.keras'
-if not os.path.exists(model_path):
+#if not os.path.exists(model_path):
     #raise FileNotFoundError(f"Model file not found: {model_path}")
 
 model = tf.keras.models.load_model(model_path)
