@@ -3,25 +3,22 @@ import numpy as np
 import tensorflow as tf
 from sklearn.preprocessing import StandardScaler, LabelEncoder, OneHotEncoder
 import pandas as pd
-import pickle
-import os
+import pickle 
 
 # Load the trained model
-model_path = 'C:/Users/xpert computers/Desktop/Gen_AI_Class_15/Prediction_and_Deployment/model.keras'
-if not os.path.exists(model_path):
-    raise FileNotFoundError(f"Model file not found: {model_path}")
-
-model = tf.keras.models.load_model(model_path)
+model = tf.keras.models.load_model('model.keras')
 
 # Load the encoder and scaler
+## Load the encoder and scalar
 with open('onehot_encoder_geo.pkl','rb') as file:
-    onehot_encoder_geo = pickle.load(file)
+    onehot_encoder_geo=pickle.load(file)
 
 with open('label_encoder_gender.pkl','rb') as file:
-    label_encoder_gender = pickle.load(file)
+    label_encoder_gender=pickle.load(file)
 
 with open('scaler.pkl','rb') as file:
-    scaler = pickle.load(file)
+    
+    scaler=pickle.load(file)
 
 
 ## Streamlit app
@@ -49,7 +46,7 @@ input_data = pd.DataFrame({
     'Age' :[age],
     'Tenure' :[tenure],
     'Balance' : [balance],
-    'NumOfProducts' : [num_of_products],  # Ensure this matches the feature name used during fitting
+    'NumberOfProducts' : [num_of_products],
     'HasCrCard' : [has_cr_card],
     'IsActiveMember': [is_active_member],
     'EstimatedSalary': [estimated_salary]
